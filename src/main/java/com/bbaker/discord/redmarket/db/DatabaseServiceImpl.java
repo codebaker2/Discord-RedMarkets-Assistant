@@ -56,7 +56,7 @@ public class DatabaseServiceImpl implements DatabaseService  {
      */
     @Override
     public boolean hasTable(String tableName) {
-        String query = 	"select count(ID) "+
+        String query = 	"select count(TABLE_NAME) "+
                         "from INFORMATION_SCHEMA.TABLES "+
                         "where TABLE_TYPE='TABLE' "+
                             "and TABLE_NAME = :tableName";

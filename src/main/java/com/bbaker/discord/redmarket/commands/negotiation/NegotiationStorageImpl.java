@@ -23,17 +23,17 @@ public class NegotiationStorageImpl implements NegotiationStorage {
 
         System.out.println("Creating " + TABLE_CHANNEL);
         String tableInsert = db.query(
-                "CREATE TABLE %s ("+
-                    "id             BIGINT          SERIAL PRIMARY KEY, "+
-                    "channel_id     BIGINT          NOT NULL UNIQUE, "+
-                    "round          INT             NOT NULL, "+
-                    "total          INT             NOT NULL, "+
-                    "client         INT             NOT NULL, "+
-                    "provider       INT             NOT NULL, "+
-                    "sway_provider  INT             NOT NULL, "+
-                    "sway_client    INT             NOT NULL, "+
-                    "is_secret      BOOLEAN         NOT NULL, "+
-                    "phase      	INT         	NOT NULL "+
+                "CREATE TABLE IF NOT EXISTS %s ( \n"+
+                    "id             BIGINT          GENERATED ALWAYS AS IDENTITY PRIMARY KEY, \n"+
+                    "channel_id     BIGINT          NOT NULL, \n"+
+                    "round          INT             NOT NULL, \n"+
+                    "total          INT             NOT NULL, \n"+
+                    "client         INT             NOT NULL, \n"+
+                    "provider       INT             NOT NULL, \n"+
+                    "sway_provider  INT             NOT NULL, \n"+
+                    "sway_client    INT             NOT NULL, \n"+
+                    "is_secret      BOOLEAN         NOT NULL, \n"+
+                    "phase      	INT         	NOT NULL \n"+
                 ");"
                 ,TABLE_CHANNEL);
 

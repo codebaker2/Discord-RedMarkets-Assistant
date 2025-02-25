@@ -21,11 +21,11 @@ public class ChannelStorageImpl implements ChannelStorage {
         if(!db.hasTable(TABLE_CHANNEL)) {
             System.out.println("Creating " + TABLE_CHANNEL);
             String tableInsert = db.query(
-                    "CREATE TABLE %s ("+
-                        "id 		BIGINT 			SERIAL PRIMARY KEY, "+
-                        "user_id 	BIGINT 			NOT NULL, "+
-                        "channel_id	BIGINT 			NOT NULL UNIQUE, "+
-                        "expiration TIMESTAMP 		NOT NULL "+
+                    "CREATE TABLE IF NOT EXISTS %s ("+
+                        "id         BIGINT      GENERATED ALWAYS AS IDENTITY PRIMARY KEY, \n"+
+                        "user_id    BIGINT      NOT NULL, \n"+
+                        "channel_id BIGINT      NOT NULL UNIQUE, \n"+
+                        "expiration TIMESTAMP   NOT NULL \n"+
                     ");"
                     ,TABLE_CHANNEL);
 
